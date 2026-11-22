@@ -1,0 +1,247 @@
+/* alo.wtf monochrome controller skin for Gamepad Viewer (Custom CSS URL) */
+html, body {
+  background: transparent !important;
+  overflow: hidden !important;
+}
+
+/* Falling white star trails stay behind the controller. */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: -90vh;
+  left: -5vw;
+  width: 110vw;
+  height: 280vh;
+  z-index: 0;
+  pointer-events: none;
+  background-repeat: repeat;
+  will-change: transform;
+}
+body::before {
+  opacity: .78;
+  background-image:
+    linear-gradient(168deg, transparent 0 46%, rgba(255,255,255,.92) 47% 48%, transparent 49%),
+    radial-gradient(circle, rgba(255,255,255,.95) 0 1.4px, transparent 1.8px),
+    radial-gradient(circle, rgba(255,255,255,.75) 0 1px, transparent 1.5px);
+  background-size: 145px 245px, 113px 137px, 181px 207px;
+  background-position: 14px 8px, 38px 27px, 84px 73px;
+  animation: alo-starfall 8s linear infinite;
+}
+body::after {
+  opacity: .45;
+  background-image:
+    linear-gradient(164deg, transparent 0 47%, rgba(255,255,255,.8) 48% 49%, transparent 50%),
+    radial-gradient(circle, #fff 0 1px, transparent 1.5px);
+  background-size: 227px 330px, 157px 183px;
+  background-position: 92px 13px, 61px 93px;
+  animation: alo-starfall 12s linear infinite -4s;
+}
+@keyframes alo-starfall {
+  from { transform: translate3d(0, -4vh, 0); }
+  to   { transform: translate3d(-5vw, 34vh, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  body::before, body::after { animation: none; }
+}
+
+/* The `.custom` class is supplied by Gamepad Viewer for custom skins. */
+.controller.custom {
+  position: relative;
+  isolation: isolate;
+  box-sizing: border-box;
+  width: 720px;
+  height: 430px;
+  margin: 0 auto;
+  overflow: visible;
+  background: transparent;
+  filter: drop-shadow(0 22px 22px rgba(0,0,0,.72));
+  z-index: 1;
+}
+.controller.custom::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 68px 22px 18px;
+  background:
+    radial-gradient(ellipse at 50% 22%, #fff 0 14%, transparent 43%),
+    linear-gradient(155deg, #f8f8f8 0%, #d9d9d9 35%, #a9a9a9 53%, #ededed 76%, #bdbdbd 100%);
+  clip-path: polygon(18% 8%, 29% 0, 71% 0, 82% 8%, 92% 24%, 100% 75%, 97% 91%, 90% 100%, 81% 96%, 72% 57%, 28% 57%, 19% 96%, 10% 100%, 3% 91%, 0 75%, 8% 24%);
+  filter: drop-shadow(0 0 2px rgba(255,255,255,.9));
+}
+.controller.custom::after {
+  content: "alo.wtf";
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  top: 48%;
+  transform: translate(-50%, -50%);
+  min-width: 122px;
+  padding: 9px 18px;
+  border: 1px solid rgba(255,255,255,.75);
+  border-radius: 8px;
+  background: linear-gradient(180deg, #202020, #050505);
+  box-shadow: 0 2px 9px rgba(0,0,0,.38), inset 0 1px rgba(255,255,255,.24);
+  color: #fff;
+  font: 800 18px/1.1 system-ui, sans-serif;
+  letter-spacing: .16em;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(255,255,255,.5);
+}
+.controller.custom > div { box-sizing: border-box; }
+.controller.custom .quadrant { display: none; }
+
+.custom .triggers {
+  position: absolute;
+  z-index: 3;
+  top: 1px;
+  left: 17%;
+  width: 66%;
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+}
+.custom .trigger {
+  width: 47%;
+  height: 54px;
+  border: 2px solid #f5f5f5;
+  border-radius: 19px 19px 8px 8px;
+  background: linear-gradient(180deg, #111, #555 55%, #191919);
+  box-shadow: inset 0 2px 3px rgba(255,255,255,.45), 0 2px 5px rgba(0,0,0,.32);
+  opacity: .16;
+  transition: opacity .08s linear, filter .08s linear;
+}
+.custom .trigger.left { float: left; }
+.custom .trigger.right { float: right; }
+.custom .trigger.pressed { opacity: 1; filter: brightness(1.65); }
+.custom .bumpers {
+  position: absolute;
+  z-index: 4;
+  top: 57px;
+  left: 18%;
+  width: 64%;
+  height: 34px;
+  display: flex;
+  justify-content: space-between;
+}
+.custom .bumper {
+  width: 15%;
+  height: 28px;
+  border: 2px solid #fafafa;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #090909, #555 45%, #171717);
+  box-shadow: inset 0 1px 2px rgba(255,255,255,.4), 0 2px 4px rgba(0,0,0,.35);
+}
+.custom .bumper.left { float: left; }
+.custom .bumper.right { float: right; }
+.custom .bumper.pressed { background: #fff; box-shadow: 0 0 15px #fff; }
+.custom .arrows {
+  position: absolute;
+  z-index: 4;
+  top: 44%;
+  left: calc(50% - 77px);
+  width: 154px;
+  height: 34px;
+  display: flex;
+  justify-content: space-between;
+}
+.custom .back, .custom .start {
+  width: 52px;
+  height: 26px;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #222, #050505);
+  box-shadow: 0 2px 4px rgba(0,0,0,.34);
+  color: #fff;
+}
+.custom .back::after { content: "−"; }
+.custom .start::after { content: "+"; }
+.custom .back.pressed, .custom .start.pressed { color: #000; background: #fff; }
+.custom .abxy {
+  position: absolute;
+  z-index: 4;
+  top: 36%;
+  right: 8%;
+  width: 174px;
+  height: 174px;
+}
+.custom .button {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 28%, #555, #111 70%);
+  box-shadow: 0 4px 7px rgba(0,0,0,.4), inset 0 1px 2px rgba(255,255,255,.4);
+  color: #fff;
+  font: 700 24px/1 system-ui, sans-serif;
+  transition: transform .07s, background .07s, color .07s;
+}
+.custom .button::after { display: block; }
+.custom .button.a { left: 61px; bottom: 0; }
+.custom .button.a::after { content: "×"; }
+.custom .button.b { right: 0; top: 61px; }
+.custom .button.b::after { content: "○"; }
+.custom .button.x { left: 0; top: 61px; }
+.custom .button.x::after { content: "□"; }
+.custom .button.y { left: 61px; top: 0; }
+.custom .button.y::after { content: "△"; }
+.custom .button.pressed {
+  transform: scale(.92);
+  color: #050505;
+  background: #fff;
+  box-shadow: 0 0 19px rgba(255,255,255,.95);
+}
+.custom .sticks {
+  position: absolute;
+  z-index: 3;
+  top: 64%;
+  left: 27%;
+  width: 46%;
+  height: 110px;
+}
+.custom .stick {
+  position: absolute;
+  width: 94px;
+  height: 94px;
+  border: 5px solid #f7f7f7;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 28%, #777 0, #242424 42%, #090909 72%);
+  box-shadow: 0 7px 12px rgba(0,0,0,.42), inset 0 2px 4px rgba(255,255,255,.43);
+}
+.custom .stick.left { top: 0; left: 0; }
+.custom .stick.right { top: 0; right: 0; }
+.custom .stick.pressed { border-color: #fff; box-shadow: 0 0 17px #fff, inset 0 2px 5px rgba(255,255,255,.65); }
+.custom .dpad {
+  position: absolute;
+  z-index: 4;
+  top: 39%;
+  left: 8%;
+  width: 154px;
+  height: 154px;
+}
+.custom .face {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  border: 2px solid #f7f7f7;
+  border-radius: 8px;
+  background: linear-gradient(145deg, #373737, #080808);
+  box-shadow: 0 3px 5px rgba(0,0,0,.36), inset 0 1px 2px rgba(255,255,255,.35);
+  color: #fff;
+  font: 700 18px/1 system-ui, sans-serif;
+}
+.custom .face.up, .custom .face.down { width: 46px; height: 52px; left: 54px; }
+.custom .face.left, .custom .face.right { width: 52px; height: 46px; top: 54px; }
+.custom .face.up { top: 0; }
+.custom .face.down { bottom: 0; }
+.custom .face.left { left: 0; }
+.custom .face.right { right: 0; }
+.custom .face.up::after { content: "↑"; }
+.custom .face.down::after { content: "↓"; }
+.custom .face.left::after { content: "←"; }
+.custom .face.right::after { content: "→"; }
+.custom .face.pressed { color: #050505; background: #fff; box-shadow: 0 0 16px #fff; }
+.custom .fstick { display: none; }
