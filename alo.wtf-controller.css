@@ -3,20 +3,29 @@ html, body {
   background: transparent !important;
   overflow: hidden !important;
 }
+/* alo.wtf monochrome Edit CSS for Gamepad Viewer. Use with the editcss= parameter. */
+html, body { background: transparent !important; overflow: hidden !important; }
 
 /* Falling white star trails stay behind the controller. */
 body::before,
 body::after {
+/* Sparse point stars: quiet sky, with occasional short meteor passes. */
+html::before {
   content: "";
   position: fixed;
   top: -90vh;
   left: -5vw;
   width: 110vw;
   height: 280vh;
+  inset: 0;
   z-index: 0;
   pointer-events: none;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMzYwIiB2aWV3Qm94PSIwIDAgMzIwIDM2MCI+PGcgZmlsbD0iI2ZmZiI+PHBhdGggZD0iTTAtNyAyLTIgNyAwIDIgMiAwIDctMiAyLTcgMC0yLTJaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMyAzNykiIG9wYWNpdHk9Ii44OCIvPjxwYXRoIGQ9Im0wLTUgMS41IDMuNUw1IDBsLTMuNSAxLjVMMCA1bC0xLjUtMy41TC01IDBsMy41LTEuNVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEyMSAyNykiIG9wYWNpdHk9Ii43Ii8+PHBhdGggZD0iTTAtNiAxLjctMS43IDYgMCAxLjcgMS43IDAgNi0xLjcgMS43LTYgMC0xLjctMS43WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjY4IDg0KSIgb3BhY2l0eT0iLjgyIi8+PHBhdGggZD0iTTAtOCAyLTIgOCAwIDIgMiAwIDgtMiAyLTggMC0yLTJaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2OCAxNDYpIiBvcGFjaXR5PSIuNzIiLz48cGF0aCBkPSJtMC01IDEuNSAzLjVMNSAwbC0zLjUgMS41TDAgNWwtMS41LTMuNUwtNSAwbDMuNS0xLjVaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMTAgMTY5KSIgb3BhY2l0eT0iLjkyIi8+PHBhdGggZD0iTTAtNyAyLTIgNyAwIDIgMiAwIDctMiAyLTcgMC0yLTJaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMSAyNTYpIiBvcGFjaXR5PSIuNzQiLz48cGF0aCBkPSJNMC02IDEuNy0xLjcgNiAwIDEuNyAxLjcgMCA2LTEuNyAxLjctNiAwLTEuNy0xLjdaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNTQgMjkzKSIgb3BhY2l0eT0iLjgiLz48cGF0aCBkPSJtMC00IDEuMiAyLjhMNCAwbC0yLjggMS4yTDAgNGwtMS4yLTIuOEwtNCAwbDIuOC0xLjJaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyODUgMzMzKSIgb3BhY2l0eT0iLjg2Ii8+PGNpcmNsZSBjeD0iOTIiIGN5PSI4MyIgcj0iMS4xIiBvcGFjaXR5PSIuNjgiLz48Y2lyY2xlIGN4PSIxNzgiIGN5PSIxMDQiIHI9IjEuNCIgb3BhY2l0eT0iLjc4Ii8+PGNpcmNsZSBjeD0iMjk1IiBjeT0iMjEwIiByPSIxIiBvcGFjaXR5PSIuNiIvPjxjaXJjbGUgY3g9IjExMSIgY3k9IjIyNiIgcj0iMS4zIiBvcGFjaXR5PSIuNyIvPjxjaXJjbGUgY3g9IjI0NyIgY3k9IjI4MCIgcj0iMSIgb3BhY2l0eT0iLjcyIi8+PGNpcmNsZSBjeD0iNDIiIGN5PSIzMjYiIHI9IjEuMiIgb3BhY2l0eT0iLjc1Ii8+PC9nPjwvc3ZnPg==");
   background-repeat: repeat;
   will-change: transform;
+  background-size: 320px 360px;
+  opacity: .58;
+  animation: alo-star-twinkle 8s ease-in-out infinite alternate;
 }
 body::before {
   opacity: .78;
@@ -27,6 +36,16 @@ body::before {
   background-size: 145px 245px, 113px 137px, 181px 207px;
   background-position: 14px 8px, 38px 27px, 84px 73px;
   animation: alo-starfall 8s linear infinite;
+body::before, body::after {
+  content: "";
+  position: fixed;
+  z-index: 1;
+  width: 240px;
+  height: 100px;
+  pointer-events: none;
+  background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMjQwIDEwMCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJ0cmFpbCIgeDE9IjIyIiB5MT0iODIiIHgyPSIyMzIiIHkyPSI4IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZmZmIiBzdG9wLW9wYWNpdHk9Ii45MiIvPjxzdG9wIG9mZnNldD0iLjI0IiBzdG9wLWNvbG9yPSIjZmZmIiBzdG9wLW9wYWNpdHk9Ii41OCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2ZmZiIgc3RvcC1vcGFjaXR5PSIwIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHBhdGggZD0iTTIzMiA4QzE3MCAyNSA5MSA1MyAyMiA4MiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI3RyYWlsKSIgc3Ryb2tlLXdpZHRoPSIyLjQiLz48cGF0aCBkPSJNMjIgNzAgMjUgNzkgMzQgODIgMjUgODUgMjIgOTQgMTkgODUgMTAgODIgMTkgNzlaIiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMjIiIGN5PSI4MiIgcj0iMi40IiBmaWxsPSIjZmZmIi8+PC9zdmc+") center / contain no-repeat;
+  opacity: 0;
+  will-change: transform, opacity;
 }
 body::after {
   opacity: .45;
@@ -36,10 +55,23 @@ body::after {
   background-size: 227px 330px, 157px 183px;
   background-position: 92px 13px, 61px 93px;
   animation: alo-starfall 12s linear infinite -4s;
+body::before { animation: alo-meteor-one 8.5s linear infinite; }
+body::after { animation: alo-meteor-two 11s linear infinite -5.2s; }
+@keyframes alo-star-twinkle { from { opacity: .4; } to { opacity: .68; } }
+@keyframes alo-meteor-one {
+  0%, 71% { transform: translate3d(112vw, -14vh, 0); opacity: 0; }
+  73% { opacity: .96; }
+  87% { transform: translate3d(18vw, 83vh, 0); opacity: .9; }
+  90%, 100% { transform: translate3d(-18vw, 112vh, 0); opacity: 0; }
 }
 @keyframes alo-starfall {
   from { transform: translate3d(0, -4vh, 0); }
   to   { transform: translate3d(-5vw, 34vh, 0); }
+@keyframes alo-meteor-two {
+  0%, 77% { transform: translate3d(75vw, -18vh, 0) scale(.72); opacity: 0; }
+  79% { opacity: .85; }
+  93% { transform: translate3d(-22vw, 88vh, 0) scale(.72); opacity: .78; }
+  96%, 100% { transform: translate3d(-35vw, 115vh, 0) scale(.72); opacity: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   body::before, body::after { animation: none; }
@@ -57,6 +89,10 @@ body::after {
   background: transparent;
   filter: drop-shadow(0 22px 22px rgba(0,0,0,.72));
   z-index: 1;
+/* Gamepad Viewer adds .edit to the existing controller for editcss= skins. */
+.controller.edit {
+  filter: grayscale(1) contrast(1.22) brightness(1.14) drop-shadow(0 12px 16px rgba(0,0,0,.62)) !important;
+  z-index: 2 !important;
 }
 .controller.custom::before {
   content: "";
@@ -70,11 +106,14 @@ body::after {
   filter: drop-shadow(0 0 2px rgba(255,255,255,.9));
 }
 .controller.custom::after {
+.controller.edit::after {
   content: "alo.wtf";
   position: absolute;
   z-index: 5;
+  z-index: 20;
   left: 50%;
   top: 48%;
+  top: 32%;
   transform: translate(-50%, -50%);
   min-width: 122px;
   padding: 9px 18px;
@@ -82,11 +121,21 @@ body::after {
   border-radius: 8px;
   background: linear-gradient(180deg, #202020, #050505);
   box-shadow: 0 2px 9px rgba(0,0,0,.38), inset 0 1px rgba(255,255,255,.24);
+  display: block;
+  padding: 7px 15px;
+  border: 2px solid #f5f5f5;
+  border-radius: 3px;
+  background: #090909;
   color: #fff;
   font: 800 18px/1.1 system-ui, sans-serif;
   letter-spacing: .16em;
+  font: 800 15px/1.1 system-ui, sans-serif;
+  letter-spacing: .06em;
   text-align: center;
   text-shadow: 0 0 10px rgba(255,255,255,.5);
+  text-shadow: 1px 2px 0 #000;
+  box-shadow: 0 3px 5px rgba(0,0,0,.78);
+  pointer-events: none;
 }
 .controller.custom > div { box-sizing: border-box; }
 .controller.custom .quadrant { display: none; }
@@ -245,3 +294,7 @@ body::after {
 .custom .face.right::after { content: "→"; }
 .custom .face.pressed { color: #050505; background: #fff; box-shadow: 0 0 16px #fff; }
 .custom .fstick { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  html::before { animation: none; }
+  body::before, body::after { animation: none; display: none; }
+}
